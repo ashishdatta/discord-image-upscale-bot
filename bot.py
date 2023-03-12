@@ -4,7 +4,6 @@ import os
 from PIL import Image
 from io import BytesIO
 import requests
-import torch
 import nextcord
 from nextcord.ext import commands
 import io
@@ -39,7 +38,8 @@ async def upscale_image(img):
         verbose=True, # Print debug messages.
     )
     answers = stability_api.upscale(
-    init_image=img
+    init_image=img,
+    width=1000
     )
     for resp in answers:
         for artifact in resp.artifacts:
